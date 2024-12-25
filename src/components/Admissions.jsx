@@ -3,7 +3,7 @@ import place from '../Images/placeHolder.jpg'
 import { BsThreeDotsVertical } from "react-icons/bs";
 const Admissions = () => {
   return (
-    <div className='flex items-center mt-4 justify-between h-24'>
+    <div className='flex items-center mt-4 justify-between h-36 border border-yellow-400 rounded-md'>
         <div>
             <img src={place} alt="Image" className='w-28' />
         </div>

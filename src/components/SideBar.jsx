@@ -33,12 +33,15 @@ const LogOut=[
     label:'LogOut'
   }
 ]
-const SideBar = () => {
+const SideBar = ({HandleClick}) => {
 
   const [isOpen,setIsOpen]=useState(true)
+  const HandleClickEvent=(id)=>{
+    HandleClick(id)
+  }
 
   return (
-    <nav className={`shadow-md h-lvh  bg-blue-950 duration-500  ${isOpen?'w-60':'w-16'} `}>
+    <nav className={`shadow-md  h-lvh bg-blue-950 duration-500  ${isOpen?'w-60':'w-16'} `}>
      <div className="flex justify-between items-center mb-5 border-blue-950 h-20">
            <h1 className={`text-3xl text-white ${!isOpen&&'hidden'}`} >Ad
              <span className="text-yellow-400">MIT</span></h1>
@@ -51,8 +54,8 @@ const SideBar = () => {
           {
             menuItems.map((items,index)=>{
               return <li key={index}className=" text-white px-3 py-2 hover:bg-white duration-300 hover:text-blue-600 cursor-pointer rounded-md flex gap-2 items-center relative group">
-               <div>{items.icon}</div>
-               <p className={`${!isOpen&&'w-0 translate-x-24 duration-500'} overflow-hidden`}>{items.label}</p>
+               <div onClick={()=>HandleClickEvent(index)}>{items.icon}</div>
+               <p className={`${!isOpen&&'w-0 translate-x-24 duration-500'} overflow-hidden`} onClick={()=>HandleClickEvent(index)}>{items.label}</p>
                <p className={`${isOpen&&'hidden'} absolute left-32 shadow-md p-2 rounded-md
                w-0
                p-0
@@ -62,7 +65,7 @@ const SideBar = () => {
                group-hover:p-2
                group-hover:left-16
                 
-               `}>{items.label}</p>
+               `} >{items.label}</p>
 
               </li>
             })
@@ -75,7 +78,7 @@ const SideBar = () => {
               {LogOut.map((items,index)=>{
                 return <li key={index} className="flex px-3 py-2 gap-3 mt-5 text-white items-center cursor-pointer" >
                   <div>{items.icon}</div>
-                  <p className={`${!isOpen&&'hidden'}`}>{items.label}</p>
+                  <p className={`${!isOpen&&'hidden'}`} >{items.label}</p>
                 </li>
                 
               })}

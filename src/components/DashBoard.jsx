@@ -19,7 +19,7 @@ const DashBoard = () => {
     <div>
     <Buttons/>
     </div>    
-     </div> 
+    </div> 
   
  </div>
   )

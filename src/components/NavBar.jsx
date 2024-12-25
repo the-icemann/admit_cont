@@ -6,7 +6,7 @@ import Widget from './Widget';
 const NavBar = () => {
   return(
 <>
-     <nav className=" border-b h-full w-full  pt-0  flex justify-between  ">
+     <nav className=" border-b  w-full  pt-0  lg:flex lg:justify-between lg:block hidden ">
     <div className='flex'>
        <img src={holder} alt="Image" className='w-10 h-10 ml-2 mt-3 rounded-full'/> 
        <div className='ml-1 mt-4'>
