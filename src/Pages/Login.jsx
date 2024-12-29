@@ -27,12 +27,12 @@ const paradesign='mt-3 mb-3 font-semibold text-xl hover:text-gray-400'
         <p className='text-center text-2xl text-gray-300'>OR</p>
         </div>
 
-        <div className='flex shadow-2xl rounded-xl h-16 items-center gap-4 ml-2 text-gray-300 nx-auto mt-5 hover:transition-transform ease-in-out cursor-pointer '>
-           <div className='flex gap-28 '>
+        <div className='flex shadow-2xl rounded-xl h-16 items-center gap-4 ml-2 text-gray-300 nx-auto mt-5 hover:text-gray-600 cursor-pointer '>
+           <div className='flex md:gap-28 gap-10'>
             <div>
             <BsGoogle size={30} className='ml-16'/>
             </div>
-            <p className='text-2xl'>Sign Up with Google</p>
+            <p className=' text-xl md:text-2xl'>Sign Up with Google</p>
             </div>
         </div>
     </div>

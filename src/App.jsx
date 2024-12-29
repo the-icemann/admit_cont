@@ -8,6 +8,7 @@ import AbountContent from './components/AbountContent'
 import ConfirmDescr from './components/ConfirmDescr'
 import Confirm from './Pages/Confirm'
 import Login from './Pages/Login'
+import BgShadow from './components/BgShadow'
 
 function App() {
 
@@ -15,7 +16,8 @@ function App() {
 <div>
  {/* <Confirm/> */}
  {/* <Steps/> */}
- <Login/>
+ {/* <Login/> */}
+ <BgShadow/>
 </div>
 
   )
