@@ -2,6 +2,8 @@ import React from 'react'
 import SteperTitle from '../components/SteperTitle'
 import { MdOutlineCancel } from "react-icons/md"; 
 import { VscPass } from "react-icons/vsc";//cancel
+import FinalContent from '../components/FinalContent';
+import Button from '../components/Button';
 const Final = () => {
 const inputDesign='border w-full h-12 rounded-md  focus:border-blue-400 outline-none placeholder:italic bg-gray-100';
 const paradesign='mt-3 mb-3 font-semibold'
@@ -32,30 +34,13 @@ const paradesign='mt-3 mb-3 font-semibold'
 <p className={` text-xl mt-4 mb-5`}>5 Schools</p>
 
 <div className='flex flex-col gap-2'>
-<div className=''>
-  <input type="checkbox" className='absolute mt-2 cursor-pointer' />
-  <div className='flex justify-between relative bg-gray-100 rounded-md hover:translate-x-7 duration-700 h-10 items-center'>
-    <p>Mengo Senior School </p>
-
-    <button className='flex items-center  text-[8px] border rounded-2xl  w-20 mr-2 justify-between border-red-500 '><MdOutlineCancel size={20} className='text-red-500'/> <span className='text-red-500'>Admissions ended</span></button>  
-      </div>
-      
-
-</div>
-<div className=''>
-  <input type="checkbox" className='absolute mt-2 cursor-pointer' />
-  <div className='flex justify-between relative bg-gray-100 rounded-md hover:translate-x-7 duration-700 h-10 items-center'>
-    <p>Namilyango Secondary School,Wakiso</p>
-
-    <button className='flex items-center  text-[8px] border rounded-2xl  w-20 mr-2 justify-between border-green-500 '><VscPass size={20} className='text-green-500'/> <span className='text-green-500'>Admission Ongoing</span></button>  
-      </div>
-      
+<FinalContent schoolName={'Mengo Senior School'} bg={'border-red-500'} icon={<MdOutlineCancel size={20} className='text-red-500'/>}  paraColor={'text-red-500'} para={'Admissions ended'}/>
+<FinalContent schoolName={'Namilyango Secondary School,Wakiso'} bg={'border-green-500'} icon={<VscPass size={20} className='text-green-500'/>}  paraColor={'text-green-500'} para={'Admissions Accepted'}/>
 
 </div>
 
-</div>
+<Button text={'Next'}/>
 
-<button className='bg-blue-950 w-full mt-3 h-10 rounded-xl text-white'>Next</button>
 
    </div>
   )

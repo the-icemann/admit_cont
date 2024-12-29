@@ -15,7 +15,7 @@ while(count < newSteps.length){
       ...newSteps[count],
       highLighted:true,
       selected:true,
-      completed:true,
+      completed:false,
     };
     count++;
   }
@@ -28,7 +28,8 @@ while(count < newSteps.length){
       completed:true,
   }
   count++
-}else{
+}
+else{
   newSteps[count]={
     ...newSteps[count],
     highLighted:false,

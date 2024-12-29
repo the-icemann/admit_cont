@@ -9,6 +9,8 @@ import About from '../Steps/About'
 import Journey from '../Steps/Journey'
 import StepThree from '../Steps/StepThree'
 import Plans from '../Steps/Plans'
+import SteperTitle from '../components/SteperTitle'
+import Logo from '../components/Logo'
 
 const Steps = () => {
     const[currentStep,setCurrentStep]=useState(1);
@@ -43,6 +45,10 @@ const handleClick=(direction)=>{
 
 }
   return (
+    <div >
+     
+     <Logo/>
+     
     <div className='md:w-1/2 mx-auto  rounded-xl pb-2 bg-white'>
   {/* Stepper */}
   <div className='container horizontal mt-4'>
@@ -71,7 +77,7 @@ currentStep={currentStep}
   steps={steps}
   />}
 </div>
-  
+</div>
 
 )
 }
