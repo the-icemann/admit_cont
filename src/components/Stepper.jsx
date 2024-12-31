@@ -64,9 +64,9 @@ setNewStep(current)
         
     <div className='relative flex flex-col items-center text-teal-600'>
       <div className={`rounded-full transition duration-500 ease-in-out border-2 bg-blue-950 h-12 w-12
-         flex items-center justify-center py-3 text-yellow-400 ${Step.selected&&" bg-blue-950 text-white font-bold border "}`}>
+         flex items-center justify-center py-3 text-white ${Step.selected&&" bg-blue-950 text-white font-bold border "}`}>
       {/* Display Number */}
-      {Step.completed?(<span className='text-yellow-400 font-bold text-xl'>&#10003;</span>):(index+1)} 
+      {Step.completed?(<span className='text-white font-bold text-xl'>&#10003;</span>):(index+1)} 
       </div>
       {/* Description Div */}
       </div>

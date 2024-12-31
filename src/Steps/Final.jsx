@@ -21,7 +21,7 @@ const paradesign='mt-3 mb-3 font-semibold'
             </svg>
         </div>
         <input type="search" id="default-search" className={`block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg  
-          dark:placeholder-gray-400 dark:text-white outline-none  focus:border-blue-400 outline-none placeholder:italic bg-gray-100` }placeholder="Search for Schools across the website..." required />
+          dark:placeholder-gray-400 outline-none  focus:border-blue-400 outline-none placeholder:italic bg-gray-100` }placeholder="Search for Schools across the website..." required />
     </div>
 </form>
 <p className={paradesign}><label htmlFor="filter">Filter By</label></p>

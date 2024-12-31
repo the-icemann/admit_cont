@@ -9,16 +9,21 @@ import ConfirmDescr from './components/ConfirmDescr'
 import Confirm from './Pages/Confirm'
 import Login from './Pages/Login'
 import BgShadow from './components/BgShadow'
+import FormContextProvider from './contexts/FormContextProvider'
 
 function App() {
 
   return (
-<div>
- {/* <Confirm/> */}
- {/* <Steps/> */}
+<FormContextProvider>
+
+
+
+ <Confirm/>
+ <Steps/>
  {/* <Login/> */}
- <BgShadow/>
-</div>
+ {/* <BgShadow/> */}
+ {/* <Home/> */}
+ </FormContextProvider>
 
   )
 }

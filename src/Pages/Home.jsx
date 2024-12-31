@@ -26,8 +26,8 @@ const Home = () => {
       break;
    }
   }
-console.log(activeItem.type===Admissions&&'Hello world')
-const description1='Under Review'
+
+
   return (
     
     <div className='flex'>
@@ -37,14 +37,14 @@ const description1='Under Review'
        <div  className='flex  h-20 w-full flex-col'>
         <NavBar/>  
         <Heading/>
-        <div className='grid grid-cols-2 ml-8'>
-          <Widget icon={<TbFileXFilled size={80}className='text-blue-950'/>} number={1} description={description1} />
-          <Widget icon={<FaFileCircleCheck size={80}className='text-blue-950'/> } number={2} description={'Accepted'}/>
+        <div className='md:flex md:gap-28 grid gap-4 ml-10'>
+          <Widget icon={<TbFileXFilled size={80}className='text-blue-950'/>} number={1} description={'UnderReview'} />
+          <Widget icon={<FaFileCircleCheck size={80}className='text-blue-950 ml-4'/> } number={2} description={'Accepted'}/>
         </div>  
  <div  className='mt-8'>
  {activeItem.type===Admissions?<Heading2/>:<Buttons />}  
 <div className='ml-10 h-lvh border border-gray-300 max-h-64 rounded-xl overflow-y-auto mt-4 ml-4'>
-  <div className='ml-20 mr-20 mb-4'>
+  <div className='md:ml-20 md:mr-20  md:mb-4 '>
   {activeItem}
   
   

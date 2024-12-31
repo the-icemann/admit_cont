@@ -5,10 +5,10 @@ const Admissions = () => {
   return (
     <div className='flex items-center mt-4 justify-between h-36 border border-yellow-400 rounded-md'>
         <div>
-            <img src={place} alt="Image" className='w-28' />
+            <img src={place} alt="Image" className='md:w-28 w-24' />
         </div>
         <div>
-            <p> We are pleased to inform you that you have been selected as a senior five Student in our school.congratulations!</p>
+            <p className=' md:text-lg text-[10px]'> We are pleased to inform you that you have been selected as a senior five Student in our school congratulations!</p>
         </div>
         <div>
             <BsThreeDotsVertical size={30}/> 

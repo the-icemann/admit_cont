@@ -35,7 +35,7 @@ const LogOut=[
 ]
 const SideBar = ({HandleClick}) => {
 
-  const [isOpen,setIsOpen]=useState(true)
+  const [isOpen,setIsOpen]=useState(false)
   const HandleClickEvent=(id)=>{
     HandleClick(id)
   }
