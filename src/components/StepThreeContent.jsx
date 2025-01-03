@@ -5,11 +5,30 @@ import FormContext from '../contexts/FormContext';
 const StepThreeContent = () => {
      const paradesign='mt-3 mb-3 font-semibold'
      const{formData,updateFormData}=useContext(FormContext);
-    const handleChange=(e)=>{
-  updateFormData({    
-    [e.target.name]:e.target.value,  
-  });
-}
+//     const{formData,updateFormData}=useContext(FormContext);
+
+//     const handleFile=(e)=>{
+// const file=e.target.files[0];
+// updateFormData({file})
+//     }
+const [file, setFile] = useState(null);  // File state
+const [isFileUploaded, setIsFileUploaded] = useState(false);  // Upload status
+
+const handleFileInput = (e) => {
+  const files = e.currentTarget.files;
+  if (files && files.length > 0) {
+    setFile(files[0]);  // Set the first file
+    setIsFileUploaded(true);  // Set uploaded status to true
+    alert('File uploaded successfully!');  // Show success message
+    updateFormData({
+      [e.target.name]:{files}
+    })
+  }
+};
+
+
+     
+ 
   return (
     <div>
         <p className={paradesign}><label htmlFor="">Application Results Testimonial</label></p>
@@ -22,7 +41,10 @@ const StepThreeContent = () => {
             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
             <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
         </div>
-        <input id="dropzone-file" type="file" name='attachedFile'  className="file:bg-gray-300 file:rounded-md file:border-none file:text-gray-400 hover:file:text-yellow-400 hover:file:bg-blue-950" />
+        <input id="dropzone-file" type="file" name='file'   
+        onChange={handleFileInput}
+        
+        className="file:bg-gray-300 file:rounded-md file:border-none file:text-gray-400 hover:file:text-yellow-400 hover:file:bg-blue-950" />
     </label>
 </div> 
     </div>

@@ -10,19 +10,21 @@ import Confirm from './Pages/Confirm'
 import Login from './Pages/Login'
 import BgShadow from './components/BgShadow'
 import FormContextProvider from './contexts/FormContextProvider'
+import DataContextProvider from './contexts/DataContextProvider'
 
 function App() {
 
   return (
 <FormContextProvider>
+<DataContextProvider>
 
 
-
- <Confirm/>
- <Steps/>
+  <Confirm/>
+ <Steps/> 
  {/* <Login/> */}
  {/* <BgShadow/> */}
  {/* <Home/> */}
+ </DataContextProvider>
  </FormContextProvider>
 
   )

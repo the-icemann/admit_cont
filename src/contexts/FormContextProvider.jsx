@@ -18,6 +18,7 @@ const[formData,setFormData]=useState({
   nextClassOfEnrollment:'',
   fieldOfStudy:'',
   desiredCombination:'',
+  file:[],
   
 
 

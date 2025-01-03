@@ -4,9 +4,15 @@ import { MdOutlineCancel } from "react-icons/md";
 import { VscPass } from "react-icons/vsc";//cancel
 import FinalContent from '../components/FinalContent';
 import Button from '../components/Button';
+import { useContext,useState} from 'react';
+import DataContext from '../contexts/DataContext';
+
 const Final = () => {
 const inputDesign='border w-full h-12 rounded-md  focus:border-blue-400 outline-none placeholder:italic bg-gray-100';
 const paradesign='mt-3 mb-3 font-semibold'
+// const{data,searchQuery,setSearchQuery}=useContext(DataContext);
+// const filteredData=data.filter(item=>item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+
   return (
    <div className='w-full'>
     <SteperTitle h2={'Search and apply to Schools'} p={'Please only select Schools  that you are seriously considering to apply to.'}/>
@@ -20,7 +26,10 @@ const paradesign='mt-3 mb-3 font-semibold'
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
             </svg>
         </div>
-        <input type="search" id="default-search" className={`block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg  
+        <input type="search" id="default-search"
+       //value={searchQuery}
+       //onChange={(e)=>setSearchQuery(e.target.value)}
+        className={`block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg  
           dark:placeholder-gray-400 outline-none  focus:border-blue-400 outline-none placeholder:italic bg-gray-100` }placeholder="Search for Schools across the website..." required />
     </div>
 </form>
@@ -34,8 +43,12 @@ const paradesign='mt-3 mb-3 font-semibold'
 <p className={` text-xl mt-4 mb-5`}>5 Schools</p>
 
 <div className='flex flex-col gap-2'>
-<FinalContent schoolName={'Mengo Senior School'} bg={'border-red-500'} icon={<MdOutlineCancel size={20} className='text-red-500'/>}  paraColor={'text-red-500'} para={'Admissions ended'}/>
-<FinalContent schoolName={'Namilyango Secondary School,Wakiso'} bg={'border-green-500'} icon={<VscPass size={20} className='text-green-500'/>}  paraColor={'text-green-500'} para={'Admissions Accepted'}/>
+  <ul className='flex flex-col gap-2'>
+    <li><FinalContent schoolName={'Mengo Senior School'} bg={'border-red-500'} icon={<MdOutlineCancel size={20} className='text-red-500'/>}  paraColor={'text-red-500'} para={'Admissions ended'}/>
+    </li>
+    <li><FinalContent schoolName={'Namilyango Secondary School,Wakiso'} bg={'border-green-500'} icon={<VscPass size={20} className='text-green-500'/>}  paraColor={'text-green-500'} para={'Admissions Accepted'}/>
+    </li>
+  </ul>
 
 </div>
 
