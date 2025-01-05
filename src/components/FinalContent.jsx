@@ -1,11 +1,16 @@
 import React,{useContext,useState} from 'react'
-
+import DataContext from '../contexts/DataContext';
 const FinalContent = ({...props}) => {
+const{setSelectedSchool}=useContext(DataContext);
   const[isChecked,setIsChecked]=useState(false);
-  const handleChecked=()=>{
+  const handleChecked=(index)=>{
     setIsChecked(!isChecked);
+    //setSelectedSchool(prev=>(...prev,index));
+    // if(isChecked===true){
+    //   setSelectedSchool(...index)
+    // }
   }
-  console.log(isChecked)
+  //console.log(isChecked)
 
   return (
     <div>

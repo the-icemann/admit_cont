@@ -1,8 +1,16 @@
 import {useState,useEffect} from 'react'
 import DataContext from './DataContext'
 const DataContextProvider = ({children}) => {
-    const[data,setData]=useState([]);
-    const[searchQuery,setSearchQuery]=useState([]);
+  const[selectedSchool,setSelectedSchool]=useState([]);
+    const[data,setData]=useState([
+      {name:'Mengo ss',status:true, sex:'mixed'},
+      {name:'St Marys Kisubi',status:false, sex:'male'},
+      {name:'Trinity COllege Nabingo ',status:true, sex:'female'},
+      {name:'St Henrys Kitovu',status:false, sex:'Male'},
+      {name:'Old Kampala Secondary School',status:true, sex:'mixed'},
+      {name:'Nabisunsa Girls',status:false, sex:'female'}
+    ]);
+    const[searchQuery,setSearchQuery]=useState('');
 
     useEffect(()=>{
         const fetchData=async()=>{
@@ -14,7 +22,7 @@ const DataContextProvider = ({children}) => {
     },[])
 
   return (
-    <DataContext.Provider value={{data,searchQuery,setSearchQuery}}>
+    <DataContext.Provider value={{data,searchQuery,setSearchQuery,setSelectedSchool}}>
           {children}
     </DataContext.Provider>
   )
