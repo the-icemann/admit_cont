@@ -19,7 +19,7 @@ function App() {
 <DataContextProvider>
 
 
-  {/* <Confirm/> */}
+  <Confirm/>
  <Steps/> 
  {/* <Login/> */}
  {/* <BgShadow/> */}

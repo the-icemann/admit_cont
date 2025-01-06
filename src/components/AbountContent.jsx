@@ -10,7 +10,6 @@ const handleChange=(e)=>{
     [e.target.name]:e.target.value,  
   });
 }
-//console.log(JSON.stringify(formData))
 
 
 

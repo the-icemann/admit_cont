@@ -1,16 +1,19 @@
 import {useState,useEffect} from 'react'
 import DataContext from './DataContext'
 const DataContextProvider = ({children}) => {
-  const[selectedSchool,setSelectedSchool]=useState([]);
+  
+  
+  const [isSelected,setIsSelected]=useState([{}]);
     const[data,setData]=useState([
-      {name:'Mengo ss',status:true, sex:'mixed'},
-      {name:'St Marys Kisubi',status:false, sex:'male'},
-      {name:'Trinity COllege Nabingo ',status:true, sex:'female'},
-      {name:'St Henrys Kitovu',status:false, sex:'Male'},
-      {name:'Old Kampala Secondary School',status:true, sex:'mixed'},
-      {name:'Nabisunsa Girls',status:false, sex:'female'}
+      {name:'Mengo ss',status:true, sex:'mixed',checked:false},
+      {name:'St Marys Kisubi',status:false, sex:'male',checked:false },
+      {name:'Trinity COllege Nabingo ',status:true, sex:'female',checked:false},
+      {name:'St Henrys Kitovu',status:false, sex:'Male',checked:false},
+      {name:'Old Kampala Secondary School',status:true, sex:'mixed',checked:false},
+      {name:'Nabisunsa Girls',status:false, sex:'female',checked:false}
     ]);
     const[searchQuery,setSearchQuery]=useState('');
+
 
     useEffect(()=>{
         const fetchData=async()=>{
@@ -22,7 +25,7 @@ const DataContextProvider = ({children}) => {
     },[])
 
   return (
-    <DataContext.Provider value={{data,searchQuery,setSearchQuery,setSelectedSchool}}>
+    <DataContext.Provider value={{data,searchQuery,setSearchQuery,setData,isSelected,setIsSelected}}>
           {children}
     </DataContext.Provider>
   )

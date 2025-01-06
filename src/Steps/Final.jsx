@@ -6,13 +6,24 @@ import FinalContent from '../components/FinalContent';
 import Button from '../components/Button';
 import { useContext,useState} from 'react';
 import DataContext from '../contexts/DataContext';
+import { stringify } from 'postcss';
 
 const Final = () => {
 const inputDesign='border w-full h-12 rounded-md  focus:border-blue-400 outline-none placeholder:italic bg-gray-100';
 const paradesign='mt-3 mb-3 font-semibold'
-const{data,searchQuery,setSearchQuery}=useContext(DataContext);
+const{data,searchQuery,setSearchQuery,setData,isSelected,setIsSelected}=useContext(DataContext);
 const filteredData=data.filter(item=>item.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
+const updateCheck = (data) =>{
+  if(!isSelected.includes(data)){
+  setIsSelected([...isSelected,data]);
+  }
+  console.log(isSelected)
+  const updateData=isSelected.filter((selectedItem)=>selectedItem!==data)
+  setIsSelected([...updateData,data])
+ // console.log(isSelected)
+
+}
   return (
    <div className='w-full'>
     <SteperTitle h2={'Search and apply to Schools'} p={'Please only select Schools  that you are seriously considering to apply to.'}/>
@@ -48,16 +59,13 @@ const filteredData=data.filter(item=>item.name.toLowerCase().includes(searchQuer
   <ul className='flex flex-col gap-2'>
    {
     filteredData.map((data,index)=>{
-      return <li key={index}>
+      return <li key={index} onClick={()=>updateCheck(data)}>
         <FinalContent schoolName={data.name} bg={data.status?'border-green-500':'border-red-500'} icon={data.status?<VscPass size={20} className='text-green-500'/>:<MdOutlineCancel size={20} className='text-red-500'/>}  
         paraColor={data.status?'text-green-500':'text-red-500'} para={data.status?'Admissions Accepted':'Admissions ended'}/>
       </li>
     })
    }
-    {/* 
-    </li>
-    <li><FinalContent schoolName={'Namilyango Secondary School,Wakiso'} bg={'border-green-500'} icon={<VscPass size={20} className='text-green-500'/>}  paraColor={'text-green-500'} para={'Admissions Accepted'}/>
-    </li> */}
+    
   </ul>
 
 </div>
