@@ -6,6 +6,7 @@ const PlanContent = () => {
 const paradesign='mt-3 mb-3 font-semibold'
 const{formData,updateFormData}=useContext(FormContext);
 const handleChange=(e)=>{
+ 
   updateFormData({    
     [e.target.name]:e.target.value,  
   });

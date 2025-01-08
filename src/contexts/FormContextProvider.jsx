@@ -37,7 +37,7 @@ useEffect(()=>{
   }
 },[])
 
-//console.log(formData)
+
 
 const updateFormData = (data) => {
   //setFormData((prevFormData) => ({ ...prevFormData, ...data }));

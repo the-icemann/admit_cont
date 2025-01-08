@@ -1,19 +1,25 @@
 import React,{useContext,useState} from 'react'
 import DataContext from '../contexts/DataContext';
 const FinalContent = ({...props}) => {
+ 
   const [isChecked,setIsChecked]=useState(false);
   const handleChecked=()=>{
       setIsChecked(!isChecked);
       
   }
+  const [effect,setEffect]=useState(false);
 
   return (
     <div>
         <div className=''>
-          <input type="checkbox"
+          <input type="checkbox"  
           checked={isChecked}
+          onChange={e=>e.target.checked}       
           className='absolute mt-2 cursor-pointer' />
-          <div className='flex justify-between   relative bg-gray-100 rounded-md hover:translate-x-7 duration-700 h-10 items-center' onClick={handleChecked}>
+          <div className={`${effect&&'animate-wiggle'} 
+            flex justify-between   relative bg-gray-100 rounded-md hover:translate-x-7 duration-700 h-10 items-center`} onClick={()=>{setEffect(!effect)
+              handleChecked()
+            }} onAnimationEnd={()=>setEffect(false)}>
             <p>{props.schoolName}</p>
         
             <button className={`flex items-center  text-[8px] border rounded-2xl 

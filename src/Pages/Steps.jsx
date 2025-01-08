@@ -14,15 +14,9 @@ import Logo from '../components/Logo'
 
 const Steps = () => {
     const[currentStep,setCurrentStep]=useState(1);
- const[userData,setUserData]=useState('');
- const[finalData,setFinalData]=useState([])
+ 
 const steps=[
-  "About Yourself",
-  "School Journey",
-  "Results testimonial",
-  "plans?",
-  "Apply to schools"
-
+1,2,3,4,5
 ]
 const displayStep=(step)=>{
 switch(step){
@@ -58,16 +52,9 @@ currentStep={currentStep}
 />
 {/* Display Components */}
 <div className=' p-5 flex '>
-<StepperContext.Provider value={{
-  userData,
-  setUserData,
-  finalData,
-  setFinalData
 
-
-}}>
   {displayStep(currentStep)}
-</StepperContext.Provider>
+
 </div>
   </div>
   {currentStep !==steps.length&&

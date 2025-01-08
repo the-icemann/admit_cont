@@ -1,4 +1,4 @@
-import React from 'react'
+import {useContext} from 'react'
 import SteperTitle from '../components/SteperTitle';
 import ConfirmDescr from '../components/ConfirmDescr';
 import AbountContent from '../components/AbountContent';
@@ -11,7 +11,17 @@ import { MdOutlineCancel } from "react-icons/md";
 import { VscPass } from "react-icons/vsc";
 import FinalContent from '../components/FinalContent';
 import Button from '../components/Button';
+import DataContext from '../contexts/DataContext';
 const Confirm = () => {
+const{isSelected,deleteSchool} =useContext(DataContext);
+const deleteSch=(data)=>{
+  if(isSelected.includes(data)){
+deleteSchool(data)
+//console.log(isSelected)
+  }else{
+    return;
+  }
+}
   return (
     <div className=''>
   <Logo/>
@@ -33,15 +43,25 @@ const Confirm = () => {
       <ConfirmDescr info={'Choice of Schools'} edit={'Edit'}/>
       {/* <FinalContent schoolName={'Mengo Senior School'} bg={'border-red-500'} icon={<MdOutlineCancel size={20} className='text-red-500'/>}  paraColor={'text-red-500'}/> */}
       
-      <div className='flex flex-col gap-2 mb-2'>
-      <FinalContent schoolName={'Mengo Senior School'} bg={'border-red-500'} icon={<MdOutlineCancel size={20} className='text-red-500'/>}  paraColor={'text-red-500'} para={'Admissions ended'}/>
-      <FinalContent schoolName={'Namilyango Secondary School,Wakiso'} bg={'border-green-500'} icon={<VscPass size={20} className='text-green-500'/>}  paraColor={'text-green-500'} para={'Admission accepted'}/>
-      <FinalContent schoolName={'Mengo Senior School'} bg={'border-red-500'} icon={<MdOutlineCancel size={20} className='text-red-500'/>}  paraColor={'text-red-500'} para={'Admissions ended'}/>
-      <FinalContent schoolName={'Namilyango Secondary School,Wakiso'} bg={'border-green-500'} icon={<VscPass size={20} className='text-green-500'/>}  paraColor={'text-green-500'} para={'Admission accepted'}/>
+      <div className=''>
+       <ul className='flex flex-col gap-2 mb-2'>
+         {
+          isSelected.map((data,index)=>{
+            return <li key={index} onClick={()=>deleteSch(data)}>
+              <FinalContent schoolName={data.name} bg={data.status?'border-green-500':'border-red-500'} icon={data.status?<VscPass size={20}  className='text-green-500'/>:<MdOutlineCancel size={20} className='text-red-500'/>}  
+                      paraColor={data.status?'text-green-500':'text-red-500'} para={data.status?'Admissions Accepted':'Admissions ended'}/>
+            </li>
+          })
+           
 
+          }
+            
+          
+         
+        </ul>
         </div>
         <div>
-        <Button text={'Submit Application'}/>
+        <Button text={'Submit Application'} type='submit'/>
         </div>
 
     </div>

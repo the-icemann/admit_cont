@@ -19,11 +19,11 @@ function App() {
 <DataContextProvider>
 
 
-  <Confirm/>
- <Steps/> 
+  {/* <Confirm/>
+ <Steps/>  */}
  {/* <Login/> */}
  {/* <BgShadow/> */}
- {/* <Home/> */}
+ <Home/>
  </DataContextProvider>
  </FormContextProvider>
 

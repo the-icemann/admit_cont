@@ -18,20 +18,20 @@ const handleChange=(e)=>{
     <div>
     <p className={paradesign}><label htmlFor="">Name of previous School</label></p>
     <div>
-      <input type="text" placeholder='previous school' name='previousSchool' className={inputDesign} value={formData.previousSchool}   onChange={handleChange} />
+      <input type="text" placeholder='previous school' name='previousSchool' className={inputDesign} value={formData.previousSchool}   onChange={handleChange} required/>
     </div>
     <p className={paradesign}><label htmlFor="">Previous school date</label></p>
     <div className='flex gap-4 '>
-      <input type="text" placeholder='month' name='month'  className={inputDesign} value={formData.month}   onChange={handleChange}/>
-      <input type="text" placeholder='year' name='year'  className={inputDesign} value={formData.year}   onChange={handleChange} />
+      <input type="text" placeholder='month' name='month'  className={inputDesign} value={formData.month}   onChange={handleChange} required/>
+      <input type="text" placeholder='year' name='year'  className={inputDesign} value={formData.year}   onChange={handleChange} required/>
     </div>
     <p className={paradesign}><label htmlFor="">Previous Class</label></p>
     <div>
-      <input type="text" placeholder='class' name='previousClass'  className={inputDesign} value={formData.previousClass}   onChange={handleChange}/>
+      <input type="text" placeholder='class' name='previousClass'  className={inputDesign} value={formData.previousClass}   onChange={handleChange} required/>
     </div>
     <p className={paradesign}><label htmlFor="">Results</label></p>
     <div>
-      <input type="text" placeholder='0.00' name='grade' className={inputDesign} value={formData.grade}   onChange={handleChange} />
+      <input type="text" placeholder='0.00' name='grade' className={inputDesign} value={formData.grade}   onChange={handleChange} required/>
     </div>
     </div>
   )

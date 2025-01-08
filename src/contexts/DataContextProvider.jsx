@@ -1,9 +1,11 @@
-import {useState,useEffect} from 'react'
+import {useState,useEffect,useContext} from 'react'
 import DataContext from './DataContext'
+import FormContext from './FormContext';
 const DataContextProvider = ({children}) => {
+  //const{setSelectedSchool}=useContext(FormContext)
   
-  
-  const [isSelected,setIsSelected]=useState([{}]);
+  const [isSelected,setIsSelected]=useState([]);
+  //setSelectedSchool([isSelected])
     const[data,setData]=useState([
       {name:'Mengo ss',status:true, sex:'mixed',checked:false},
       {name:'St Marys Kisubi',status:false, sex:'male',checked:false },
@@ -12,9 +14,18 @@ const DataContextProvider = ({children}) => {
       {name:'Old Kampala Secondary School',status:true, sex:'mixed',checked:false},
       {name:'Nabisunsa Girls',status:false, sex:'female',checked:false}
     ]);
+    //Searching state
     const[searchQuery,setSearchQuery]=useState('');
 
-
+    
+    //Deleting school from Ui 
+    const deleteSchool=(data)=>{
+      const updateTasks=isSelected.filter((item)=>item!==data)
+      // console.log(updateTasks)
+      setIsSelected([...updateTasks])
+      
+    }
+console.log(isSelected)
     useEffect(()=>{
         const fetchData=async()=>{
             const response=await fetch('api/data')
@@ -25,7 +36,7 @@ const DataContextProvider = ({children}) => {
     },[])
 
   return (
-    <DataContext.Provider value={{data,searchQuery,setSearchQuery,setData,isSelected,setIsSelected}}>
+    <DataContext.Provider value={{data,searchQuery,setSearchQuery,setData,isSelected,setIsSelected,deleteSchool}}>
           {children}
     </DataContext.Provider>
   )
