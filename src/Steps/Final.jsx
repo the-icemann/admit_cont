@@ -6,22 +6,30 @@ import FinalContent from '../components/FinalContent';
 import Button from '../components/Button';
 import { useContext,useState} from 'react';
 import DataContext from '../contexts/DataContext';
+import FormContext from '../contexts/FormContext';
 import { stringify } from 'postcss';
 
 const Final = () => {
 const inputDesign='border w-full h-12 rounded-md  focus:border-blue-400 outline-none placeholder:italic bg-gray-100';
 const paradesign='mt-3 mb-3 font-semibold'
-const{data,searchQuery,setSearchQuery,setData,isSelected,setIsSelected,deleteSchool}=useContext(DataContext);
+const{data,searchQuery,setSearchQuery,isSelected,setIsSelected,deleteSchool,formData}=useContext(DataContext);
+const{updateFormData}=useContext(FormContext)
 const filteredData=data.filter(item=>item.name.toLowerCase().includes(searchQuery.toLowerCase()));
+
 
 const updateCheck = (data) =>{
   if(!isSelected.includes(data)){
-  setIsSelected([...isSelected,data]);   
+   
+  setIsSelected([...isSelected,data]);
+  updateFormData({    
+    selectedschool:[...isSelected],  
+  });
   }
   else{
     deleteSchool(data)
+    
   }
-  //console.log(isSelected)
+ 
 
 
 }

@@ -1,6 +1,8 @@
 import {React,useState,useEffect} from 'react'
 import FormContext from './FormContext'
 const FormContextProvider = ({children}) => {
+  const [schools,setSchools]=useState([])
+  const[files,setFiles]=useState([])
 const[formData,setFormData]=useState({
   firstName:'',
   lastName:'',
@@ -18,12 +20,15 @@ const[formData,setFormData]=useState({
   nextClassOfEnrollment:'',
   fieldOfStudy:'',
   desiredCombination:'',
-  file:[],
+  file:files,
+  selectedschool:[]
+
   
 
 
 
 });
+
 useEffect(()=>{
   const handleSubmit=async()=>{
     const res=await fetch('api/submit',{
@@ -39,6 +44,7 @@ useEffect(()=>{
 
 
 
+
 const updateFormData = (data) => {
   //setFormData((prevFormData) => ({ ...prevFormData, ...data }));
   setFormData({...formData,...data});
@@ -49,7 +55,7 @@ const updateFormData = (data) => {
 
 
   return (
-    <FormContext.Provider value={{formData,updateFormData}}>
+    <FormContext.Provider value={{formData,updateFormData,setSchools,setFiles}}>
         {children}
     </FormContext.Provider>
   )

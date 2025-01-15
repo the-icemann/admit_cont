@@ -11,6 +11,7 @@ import Login from './Pages/Login'
 import BgShadow from './components/BgShadow'
 import FormContextProvider from './contexts/FormContextProvider'
 import DataContextProvider from './contexts/DataContextProvider'
+import StepThree from './Steps/StepThree'
 
 function App() {
 
@@ -19,11 +20,12 @@ function App() {
 <DataContextProvider>
 
 
-  {/* <Confirm/>
- <Steps/>  */}
+
+  <Confirm/>
+ <Steps/> 
  {/* <Login/> */}
  {/* <BgShadow/> */}
- <Home/>
+ {/* <Home/> */}
  </DataContextProvider>
  </FormContextProvider>
 

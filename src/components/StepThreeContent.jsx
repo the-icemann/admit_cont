@@ -4,20 +4,21 @@ import FormContext from '../contexts/FormContext';
 
 const StepThreeContent = () => {
      const paradesign='mt-3 mb-3 font-semibold'
-     const{updateFormData}=useContext(FormContext);
-
+     const{updateFormData,setFiles}=useContext(FormContext);
+     
   // Upload status
-
+const[isFileUploaded,setIsFileUploaded]=useState(false)
 const handleFileInput = (e) => {
   const files = e.currentTarget.files;
-  if (files && files.length > 0) {
-    setFile(files[0]);  // Set the first file
+  if (files) {
+    setFiles(files[0]);  // Set the first file
     setIsFileUploaded(true);  // Set uploaded status to true
     alert('File uploaded successfully!');  // Show success message
     updateFormData({
       [e.target.name]:{files}
     })
   }
+  
 };
 
 
@@ -35,7 +36,7 @@ const handleFileInput = (e) => {
             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
             <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
         </div>
-        <input id="dropzone-file" type="file" name='file'   
+        <input id="dropzone-file" type="file" name='file'
         onChange={handleFileInput}
         className="file:bg-gray-300 file:rounded-md file:border-none file:text-gray-400 hover:file:text-yellow-400 hover:file:bg-blue-950" required/>
     </label>
