@@ -12,17 +12,17 @@ import { stringify } from 'postcss';
 const Final = () => {
 const inputDesign='border w-full h-12 rounded-md  focus:border-blue-400 outline-none placeholder:italic bg-gray-100';
 const paradesign='mt-3 mb-3 font-semibold'
-const{data,searchQuery,setSearchQuery,isSelected,setIsSelected,deleteSchool,formData}=useContext(DataContext);
-const{updateFormData}=useContext(FormContext)
+const{data,searchQuery,setSearchQuery,isSelected,setIsSelected,deleteSchool}=useContext(DataContext);
+const{updateFormData,errors}=useContext(FormContext)
 const filteredData=data.filter(item=>item.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
 
 const updateCheck = (data) =>{
-  if(!isSelected.includes(data)){
-   
+  if(!isSelected.includes(data)){ 
   setIsSelected([...isSelected,data]);
+  
   updateFormData({    
-    selectedschool:[...isSelected],  
+    selectedschool:[...isSelected,data],  
   });
   }
   else{
@@ -74,7 +74,7 @@ const updateCheck = (data) =>{
       </li>
     })
    }
-    
+    {errors.selectedschool&&<span>{errors.selectedschool}</span>}
   </ul>
 
 </div>

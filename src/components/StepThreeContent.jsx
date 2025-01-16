@@ -25,7 +25,7 @@ const handleFileInput = (e) => {
      
  
   return (
-    <form>
+    <div>
         <p className={paradesign}><label>Application Results Testimonial</label></p>
 <div className="flex items-center justify-center w-full" >
     <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 bg-gray-300 hover:bg-gray-600 rounded-2xl">
@@ -41,7 +41,7 @@ const handleFileInput = (e) => {
         className="file:bg-gray-300 file:rounded-md file:border-none file:text-gray-400 hover:file:text-yellow-400 hover:file:bg-blue-950" required/>
     </label>
 </div> 
-</form>
+</div>
   )
 }
 

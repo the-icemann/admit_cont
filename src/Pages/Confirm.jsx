@@ -12,8 +12,10 @@ import { VscPass } from "react-icons/vsc";
 import FinalContent from '../components/FinalContent';
 import Button from '../components/Button';
 import DataContext from '../contexts/DataContext';
+import FormContext from '../contexts/FormContext';
 const Confirm = () => {
 const{isSelected,deleteSchool} =useContext(DataContext);
+const {handleSubmit2}=useContext(FormContext)
 const deleteSch=(data)=>{
   if(isSelected.includes(data)){
 deleteSchool(data)
@@ -23,7 +25,7 @@ deleteSchool(data)
   }
 }
   return (
-    <div className=''>
+    <form onSubmit={handleSubmit2}>
   <Logo/>
   <div className='text-center my-5 '>    
     <h2 className='text-blue-900 text-xl'>Application Review</h2>
@@ -67,7 +69,7 @@ deleteSchool(data)
     </div>
     
       </div>
-  </div>
+  </form>
   )
 }
 
