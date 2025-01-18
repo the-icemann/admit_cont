@@ -22,7 +22,7 @@ const[formData,setFormData]=useState({
   fieldOfStudy:'',
   desiredCombination:'',
   file:files,
-  selectedschool:[]
+  selectedschool:[],
 
   
 

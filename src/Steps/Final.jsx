@@ -74,7 +74,7 @@ const updateCheck = (data) =>{
       </li>
     })
    }
-    {errors.selectedschool&&<span>{errors.selectedschool}</span>}
+    
   </ul>
 
 </div>

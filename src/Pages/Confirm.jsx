@@ -15,10 +15,12 @@ import DataContext from '../contexts/DataContext';
 import FormContext from '../contexts/FormContext';
 const Confirm = () => {
 const{isSelected,deleteSchool} =useContext(DataContext);
-const {handleSubmit2}=useContext(FormContext)
+const {handleSubmit2,updateFormData,formData}=useContext(FormContext)
+
 const deleteSch=(data)=>{
   if(isSelected.includes(data)){
 deleteSchool(data)
+
 //console.log(isSelected)
   }else{
     return;
