@@ -8,6 +8,7 @@ import { useContext,useState} from 'react';
 import DataContext from '../contexts/DataContext';
 import FormContext from '../contexts/FormContext';
 import { stringify } from 'postcss';
+import { Link } from 'react-router-dom';
 
 const Final = () => {
 const inputDesign='border w-full h-12 rounded-md  focus:border-blue-400 outline-none placeholder:italic bg-gray-100';
@@ -78,8 +79,10 @@ const updateCheck = (data) =>{
   </ul>
 
 </div>
+<Link
+to={'/schoolPage'}
+><Button text={'Next'}/></Link>
 
-<Button text={'Next'}/>
 
 
    </div>

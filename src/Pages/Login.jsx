@@ -1,8 +1,7 @@
 import React from 'react'
 import Logo from '../components/Logo'
 import SteperTitle from '../components/SteperTitle'
-import Button from '../components/Button';
-import gog from '../Images/gogle.png'
+import{Link} from 'react-router-dom'
 import { BsGoogle } from "react-icons/bs";
 const Login = () => {
     const inputDesign='border w-full h-14 rounded-md  focus:border-blue-400 outline-none placeholder:italic bg-gray-100 ';
@@ -23,7 +22,7 @@ const paradesign='mt-3 mb-3 font-semibold text-xl hover:text-gray-400'
         </div>
 
         <div>
-        <button className='bg-blue-950 w-full  h-14 rounded-xl text-white text-xl my-3'>Get started</button>
+        <Link to={'/steps'}><button className='bg-blue-950 w-full  h-14 rounded-xl text-white text-xl my-3'>Get started</button></Link>
         <p className='text-center text-2xl text-gray-300'>OR</p>
         </div>
 

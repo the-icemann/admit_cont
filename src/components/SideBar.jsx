@@ -15,6 +15,7 @@ const menuItems=[
     icon:<HiAcademicCap size={30}/>,
     label:'Application status'
 
+    
   },
   {
     icon:<LiaNotesMedicalSolid size={30}/>,

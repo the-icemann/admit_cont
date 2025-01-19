@@ -1,5 +1,4 @@
-import arc from '../Images/Ellipse 1.png';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import cartoon1 from '../Images/Application.png'
 import cartoon2 from '../Images/undraw_studying_re_deca 1.png'
 import cartoon3 from '../Images/Frame 42.png'
@@ -9,6 +8,7 @@ import cartoon6 from '../Images/Frame 42.png'
 import cartoon7 from '../Images/Frame 44.png'
 import logo from '../Images/Group 152.png'
 import LandingCard from '../components/LandingCard';
+
 const Landing = () => {
     return (
         <>
@@ -28,10 +28,10 @@ const Landing = () => {
             <div >
               <ul className='flex gap-3'>
                 <li className='border border-blue-900 rounded-lg w-20 text-center flex items-center justify-center hover:bg-blue-950 '>
-                    <button className='text-lg text-blue-900  hover:text-white'>Log In</button>                
+                <Link to={'/login'}><button className='text-lg text-blue-900  hover:text-white'>Log In</button> </Link>           
                 </li>
                 <li className='border rounded-lg w-20 text-center bg-blue-300 h-10 w-18 flex items-center justify-center'>
-                    <button className='text-lg text-blue-900'>SignUp</button>
+                  <Link to={'/login'}><button className='text-lg text-blue-900'>SignUp</button></Link>  
                 </li>
               </ul>
             </div>

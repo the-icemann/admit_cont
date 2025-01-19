@@ -13,6 +13,7 @@ import FinalContent from '../components/FinalContent';
 import Button from '../components/Button';
 import DataContext from '../contexts/DataContext';
 import FormContext from '../contexts/FormContext';
+import {Link} from 'react-router-dom'
 const Confirm = () => {
 const{isSelected,deleteSchool} =useContext(DataContext);
 const {handleSubmit2,updateFormData,formData}=useContext(FormContext)
@@ -65,7 +66,7 @@ deleteSchool(data)
         </ul>
         </div>
         <div>
-        <Button text={'Submit Application'} type='submit'/>
+       <Link to={'/home'}> <Button text={'Submit Application'} type='submit'/></Link>
         </div>
 
     </div>
