@@ -2,6 +2,7 @@ import holder from '../Images/placeHolder.jpg';
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { HiOutlineInformationCircle } from "react-icons/hi";
 import { GoDotFill } from "react-icons/go";
+import {Link} from 'react-router-dom'
 import Widget from './Widget';
 const NavBar = () => {
   return(
@@ -17,10 +18,10 @@ const NavBar = () => {
 <div className='flex items-center'>
 <IoIosNotificationsOutline size={20} className='relative text-blue-950 '/>
 <GoDotFill className='absolute top-0 mt-4 ml-1  text-blue-950'/>
-<button className='flex items-center bg-blue-950 text-white rounded-md h-10 mr-2 w-32 text-center'>
+<Link to={'/login'}><button className='flex items-center bg-blue-950 text-white rounded-md h-10 mr-2 w-32 text-center'>
    <p className='ml-7 text-l'>Logout</p> 
     <HiOutlineInformationCircle size={14} className='ml-2'/>
-</button>
+</button></Link>
 </div>
 </nav>
 
