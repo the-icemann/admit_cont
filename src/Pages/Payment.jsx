@@ -17,7 +17,7 @@ const Payment = () => {
 
 <div className='w-full flex '>
  
- <form action="" className='md:w-1/2 mx-auto border border-blue-500 h-fit mt-8 rounded-2xl  lg:w-auto '>
+ <form action="" className=' mx-auto border border-blue-500 h-fit mt-8 rounded-2xl p-24 lg:w-auto '>
  <div>
   <div className='mb-10 text-center mt-5'>
     <h2 className='text-blue-700 font-semibold'>ADMISSION FEE PAYMENT FORM</h2>

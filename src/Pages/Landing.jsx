@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import myImage from '../Images/new admit image.png'
 import cartoon1 from '../Images/Application.png'
 import cartoon2 from '../Images/undraw_studying_re_deca 1.png'
 import cartoon3 from '../Images/Frame 42.png'
@@ -30,14 +31,14 @@ const Landing = () => {
                 <li className='border border-blue-900 rounded-lg w-20 text-center flex items-center justify-center hover:bg-blue-950 '>
                 <Link to={'/login'}><button className='text-lg text-blue-900  hover:text-white'>Log In</button> </Link>           
                 </li>
-                <li className='border rounded-lg w-20 text-center bg-blue-300 h-10 w-18 flex items-center justify-center'>
-                  <Link to={'/login'}><button className='text-lg text-blue-900'>SignUp</button></Link>  
+                <li className='border rounded-lg w-20 text-center bg-blue-950 h-10 w-18 flex items-center justify-center hover:bg-white'>
+                  <Link to={'/login'}><button className='text-lg text-white  hover:text-blue-950'>SignUp</button></Link>  
                 </li>
               </ul>
             </div>
         </nav>
 
-<section className='mx-20 my-10 flex gap-10 lg:flex-row md:flex-row flex-col' >
+{/* <section className='mx-20 my-10 flex gap-10 lg:flex-row md:flex-row flex-col' >
 
 <div>
     <div>
@@ -66,6 +67,36 @@ const Landing = () => {
 
 </div>
 
+</section> */}
+
+<section id="hero">
+
+{/* FLEX CONTAINER */}
+
+<div className="flex container flex-col-reverse md:flex-row items-center mx-auto">
+
+    {/* First box(left side) */}
+
+    <div className="flex text-center flex-col p-5 m-10 space-y-12 md:w-1/2 md:text-left" >
+
+    <h2 className="text-6xl text-left text-center text-blue-950 md:text-left lg:text-8xl">Apply To Your Dream School With Ease!</h2>
+
+    <p className="text-2xl">Our Web App Simplifies the O-level and A-level Application Process for Primary and High School Students.</p>
+
+    {/* <a href="" className="p-4 px-6 pt-2 text-white bg-blue-950  border-2 border-blue-950  rounded baseline text-2xl">Start your application</a> */}
+    <Link to={'/login'}><button className='p-4 px-8 py-4 w-full text-white bg-blue-950  border-2 border-blue-950 rounded baseline text-2xl text-center md:text-left hover:bg-white hover:text-blue-800 '>Start your application</button></Link> 
+
+</div>
+
+{/* Second box (Right side) */}
+
+<div className="md:w-1/2">
+<img src={myImage} alt="picture of girl studying" />
+
+</div>
+
+</div>
+
 </section>
 
 
@@ -79,6 +110,11 @@ const Landing = () => {
 
 
 </section>
+
+
+
+
+
 
 
         </>
