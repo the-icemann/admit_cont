@@ -27,7 +27,6 @@ const Landing = () => {
 
 
 
-
     return (
         <>
         <nav className='flex justify-between items-center lg:mx-20 lg:my-10'>
