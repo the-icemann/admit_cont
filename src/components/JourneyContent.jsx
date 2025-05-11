@@ -27,7 +27,10 @@ const handleChange=(e)=>{
     </div>
     <p className={paradesign}><label htmlFor="">Previous Class</label></p>
     <div>
-      <input type="text" placeholder='class' name='previousClass'  className={inputDesign} value={formData.previousClass}   onChange={handleChange} required/>
+    <select name="previousClass" id="previousClass" className={inputDesign} >
+        <option value={formData.previousClass} onChange={handleChange} className=''>Primary 7</option>
+        <option value={formData.previousClass} onChange={handleChange}>Senior 4 </option>
+      </select>
     </div>
     <p className={paradesign}><label htmlFor="">Results</label></p>
     <div>

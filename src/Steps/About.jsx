@@ -4,7 +4,7 @@ import AbountContent from '../components/AbountContent';
 
 const About = () => {
   return (
-    <div className=' w-full'>
+    <div className=' w-full pt-5'>
      <SteperTitle h2={'Tell us about yourself'} p={'Please make sure all the information is up-to-date and accurate'}/>
      <AbountContent />
      </div>
