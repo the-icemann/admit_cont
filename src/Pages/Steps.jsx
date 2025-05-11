@@ -39,13 +39,13 @@ const handleClick=(direction)=>{
 
 }
   return (
-    <div >
+    <div className='py-5 px-2 mt-5' >
      
      <Logo/>
      
-    <div className='md:w-1/2 mx-auto  rounded-xl pb-2 bg-white'>
+    <div className='md:w-1/2 mx-auto rounded-xl pb-2 sm:w-3/5 '>
   {/* Stepper */}
-  <div className='container horizontal mt-4'>
+  <div className=' horizontal mt-4 container'>
 <Stepper
 steps={steps}
 currentStep={currentStep}
