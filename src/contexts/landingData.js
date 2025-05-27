@@ -22,4 +22,4 @@ const landingData=[
       "Applying to schools can be a daunting process, but our web app is here to help. We provide expert guidance and support throughout the entire application process, from selecting the right schools to crafting a strong personal statement.",
   },];
 
-export  default landingData
+export default landingData 

@@ -1,11 +1,10 @@
-
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Logo from '../components/Logo';
 import SteperTitle from '../components/SteperTitle';
 import { Link, useNavigate } from 'react-router-dom';
 import { BsGoogle } from "react-icons/bs";
 import { useFormik } from 'formik';
-import {
+ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   sendEmailVerification,
@@ -14,33 +13,94 @@ import {
 } from 'firebase/auth';
 import { auth, googleProvider } from '../assets/config/firebaseConfig';
 import { mySchema } from '../schemas';
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { db } from '../assets/config/firebaseConfig';
+import { useState } from 'react';
 
 const Login = () => {
   const navigate = useNavigate();
+   const [idleTime, setIdleTime] = useState(0);
+
+useEffect(() => {
+        const resetTimer = () => setIdleTime(0);
+
+        // Detect user interaction
+        window.addEventListener("mousemove", resetTimer);
+        window.addEventListener("keypress", resetTimer);
+        window.addEventListener("click", resetTimer);
+
+        const interval = setInterval(async() => {
+          try {
+             setIdleTime(prevIdleTime => prevIdleTime + 1);
+            if (idleTime >= 20) {
+                alert("You have been logged out due to inactivity.");
+             
+              navigate('/')
+            }
+          } catch (error) {
+            console.log(error)
+          }
+           
+        }, 1000);
+
+        // Cleanup function
+        return () => {
+            clearInterval(interval);
+            window.removeEventListener("mousemove", resetTimer);
+            window.removeEventListener("keypress", resetTimer);
+            window.removeEventListener("click", resetTimer);
+        };
+    }, [idleTime]);
+    console.log(idleTime)
+    
+    
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        await user.reload(); // 🔁 Refresh user data
-        if (user.emailVerified) {
-          navigate("/steps");
-          
+        await user.reload(); // Refresh the user session
+
+        if (auth.currentUser.emailVerified) {
+          checkAndProceed(user);
+        } else {
+          console.log("Unverified user:", user.email);
         }
       }
     });
 
-    return () => unsubscribe(); // Clean up listener
+    return () => unsubscribe();
   }, [navigate]);
+  
 
   const sendVerificationAndAlert = async (user) => {
     try {
-      
-
-      await sendEmailVerification(user);
-      alert("A verification email has been sent to your inbox. Please verify your email before continuing.");
+      await sendEmailVerification(user, {
+        url: "https://localhost/verify-email", // Change this to match your frontend
+        handleCodeInApp: true
+      });
+      alert("A verification email has been sent. Please verify your email before continuing.");
       
     } catch (err) {
       console.error("Failed to send verification email:", err);
+    }
+  };
+
+  const checkAndProceed = async (user) => {
+    try {
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (userSnap.exists()) {
+        console.log("User exists, proceeding...");
+        navigate("/steps"); // Redirect if user exists
+      } else {
+        console.log("User does not exist, creating account...");
+        await setDoc(userRef, { email: user.email });
+        navigate("/steps"); // Redirect after account creation
+      }
+    } catch (error) {
+      console.error("Error checking user:", error);
     }
   };
 
@@ -48,8 +108,9 @@ const Login = () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
       await sendVerificationAndAlert(userCredential.user);
+      checkAndProceed(userCredential.user);
     } catch (err) {
-      console.log(err);
+      console.error("Error signing in:", err);
     }
   };
 
@@ -58,14 +119,11 @@ const Login = () => {
     googleProvider.setCustomParameters({ prompt: "select_account" });
 
     try {
-      if (auth.currentUser) {
-        await signOut(auth);
-      }
-
-      await signInWithPopup(auth, googleProvider);
-      navigate("/steps"); // Google accounts are usually verified
+      if (auth.currentUser) await signOut(auth);
+      const userCredential = await signInWithPopup(auth, googleProvider);
+      checkAndProceed(userCredential.user);
     } catch (err) {
-      console.log(err);
+      console.error("Error signing in with Google:", err);
     }
 
     localStorage.clear();
@@ -89,7 +147,7 @@ const Login = () => {
       try {
         await signIn(values);
       } catch (error) {
-        console.log("Error", error);
+        console.error("Error:", error);
         setErrors({ email: "Invalid credentials" });
       } finally {
         setSubmitting(false);
@@ -98,7 +156,7 @@ const Login = () => {
   });
 
   const inputDesign = 'mt-4 border w-full h-14 rounded-md focus:border-blue-400 outline-none placeholder:italic bg-gray-100';
-  const paradesign = 'mt-3 mb-3 font-semibold text-xl hover:text-gray-400';
+  const paradesign1 = 'mt-3 mb-3 font-semibold text-xl';
 
   return (
     <div className='mx-auto container flex items-center justify-center my-16'>
@@ -114,15 +172,15 @@ const Login = () => {
 
         <form onSubmit={handleSubmit}>
           <div className='my-4'>
-            <label htmlFor="email" className={paradesign}>Email</label><br />
+            <label htmlFor="email" className={paradesign1}>Email</label><br />
             <input
               type="email"
               id='email'
+              name='email'
               className={`${inputDesign} ${errors.email && touched.email ? "border-red-600" : ""}`}
               placeholder='Enter Email Address'
               onChange={handleChange}
               value={values.email}
-              name='email'
               onBlur={handleBlur}
             />
             {touched.email && errors.email && (
@@ -131,12 +189,12 @@ const Login = () => {
           </div>
 
           <div className='my-4'>
-            <label htmlFor="password" className={paradesign}>Password</label><br />
+            <label htmlFor="password" className={paradesign1}>Password</label><br />
             <input
               type="password"
               id='password'
               name="password"
-              className={inputDesign}
+              className={`${inputDesign} ${errors.password && touched.password ? "border-red-600" : ""}`}
               placeholder='Password'
               onChange={handleChange}
               value={values.password}
@@ -158,7 +216,7 @@ const Login = () => {
           </div>
 
           <button
-            className='flex shadow-2xl rounded-xl justify-center h-16 items-center gap-4 text-gray-300 mx-auto mt-5 hover:text-gray-600 cursor-pointer w-full'
+            className='flex shadow-2xl rounded-xl justify-center h-16 items-center gap-4 text-gray-600 mx-auto mt-5 hover:text-gray-500 cursor-pointer w-full'
             onClick={signInWithGoogle}
           >
             <div className='flex md:gap-28 items-center md:justify-center lg:mx-auto'>
